@@ -1,0 +1,54 @@
+version: '3.4'
+
+services:
+
+  spark-master:
+    image: spark
+    command: spark/sbin/start-master.sh
+    hostname: spark-master
+    environment:
+      MASTER: spark://spark-master:7077
+    ports:
+    - 4040:4040
+    - 6066:6066
+    - 7077:7077
+    - 8080:8080
+    networks:
+      awesomenet:
+        aliases:
+        - spark-master
+
+  spark-worker:
+    image: spark
+    command: spark/sbin/start-slave.sh spark://spark-master:7077
+    hostname: spark-worker
+    ports:
+    - 8081:8081
+    depends_on:
+    - spark-master
+    deploy:
+      mode: replicated
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    networks:
+      awesomenet:
+
+  hadoop-master:
+    image: hadoop
+    command: hadoop/sbin/start-dfs.sh
+    hostname: hadoop-master
+    ports:
+    - 50070:50070
+    deploy:
+      placement:
+        constraints:
+        - node.labels.role == master
+    networks:
+      awesomenet:
+        aliases:
+        - hadoop-master
+
+networks:
+  awesomenet:
+    driver: overlay

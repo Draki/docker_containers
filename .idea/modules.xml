@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/docker-hadoop/docker-hadoop.iml" filepath="$PROJECT_DIR$/docker-hadoop/docker-hadoop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/docker-hadoop-SGAE/docker-hadoop-SGAE.iml" filepath="$PROJECT_DIR$/docker-hadoop-SGAE/docker-hadoop-SGAE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/docker-hive/docker-hive.iml" filepath="$PROJECT_DIR$/docker-hive/docker-hive.iml" />
+      <module fileurl="file://$PROJECT_DIR$/docker-hive-old/docker-hive-old.iml" filepath="$PROJECT_DIR$/docker-hive-old/docker-hive-old.iml" />
+      <module fileurl="file://$PROJECT_DIR$/docker-java/docker-java.iml" filepath="$PROJECT_DIR$/docker-java/docker-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/docker-java-master/docker-java-master.iml" filepath="$PROJECT_DIR$/docker-java-master/docker-java-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/docker-spark/docker-spark.iml" filepath="$PROJECT_DIR$/docker-spark/docker-spark.iml" />
+    </modules>
+  </component>
+</project>

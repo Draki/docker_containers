@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  spark-master:
+    image: danielrodriguez/spark:2.3.2
+    command: spark/sbin/start-master.sh
+    hostname: spark-master
+    environment:
+      MASTER: spark://spark-master:7077
+    ports:
+    - 4040:4040
+    - 6066:6066
+    - 7077:7077
+    - 8080:8080
+
+  spark-worker:
+    image: danielrodriguez/spark:2.3.2
+    command: spark/sbin/start-slave.sh spark-master:7077
+    hostname: spark-worker
+    ports:
+    - 8081:8081
+    depends_on:
+    - spark-master
+
+  nodemaster:
+    image: danielrodriguez/hadoop:3.1.1
+    command: hadoop/sbin/start-dfs.sh
+    hostname: nodemaster
+    ports:
+    - 50070:50070
+    - 22:22
